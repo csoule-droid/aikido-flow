@@ -167,7 +167,7 @@ const Index = () => {
               L'aïkido, pour <span className="gradient-text">qui</span> ?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Un art martial accessible qui s'adapte à chaque pratiquant.
+              L'aïkido est un sport complet qui peut convenir à tous, à tout âge. C'est une discipline très intéressante pour les femmes, les seniors et les jeunes qui veulent pratiquer un sport de combat "doux" sans compétition.
             </p>
           </div>
 
