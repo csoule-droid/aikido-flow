@@ -67,37 +67,56 @@ export default function AdminContent() {
 
         {/* Content sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {contentSections.map((section) => (
-            <div 
-              key={section.title} 
-              className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-colors cursor-pointer group"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
-                  <section.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-lg">{section.title}</h3>
-                    <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                      {section.count} pages
-                    </span>
+          {contentSections.map((section) => {
+            const isClickable = section.title === 'Pages techniques';
+            
+            if (isClickable) {
+              return (
+                <Link 
+                  key={section.title}
+                  to="/admin/content/technical-sheets"
+                  className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-colors cursor-pointer group block"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                      <section.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold text-lg">{section.title}</h3>
+                        <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                          {section.count} pages
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">{section.description}</p>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{section.description}</p>
+                </Link>
+              );
+            }
+            
+            return (
+              <div 
+                key={section.title}
+                className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-colors cursor-pointer group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <section.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-lg">{section.title}</h3>
+                      <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                        {section.count} pages
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-1">{section.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Placeholder notice */}
-        <div className="bg-muted/50 rounded-2xl p-8 text-center">
-          <FileText className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Éditeur de contenu à venir</h3>
-          <p className="text-muted-foreground max-w-md mx-auto">
-            L'éditeur de contenu permettra de modifier les textes du site directement 
-            depuis le backoffice, sans toucher au code.
-          </p>
+            );
+          })}
         </div>
       </main>
     </div>
