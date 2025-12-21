@@ -54,7 +54,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
-            <img src={logo} alt="AikidoConnect" className="h-auto w-[100px]" />
+            <img src={logo} alt="AikidoConnect" className="h-auto w-[140px]" />
           </Link>
 
           {/* Desktop Navigation */}

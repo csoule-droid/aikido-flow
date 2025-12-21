@@ -97,7 +97,7 @@ const Index = () => {
               <span>Art martial japonais non-violent</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 animate-fade-up delay-100">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 animate-fade-up delay-100">
               <span className="gradient-text">Aiki,</span> agis sur ton énergie !
             </h1>
             
