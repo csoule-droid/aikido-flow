@@ -21,6 +21,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminStats from "./pages/admin/Stats";
 import AdminContent from "./pages/admin/Content";
+import AdminTechnicalSheets from "./pages/admin/TechnicalSheets";
 import AdminVideos from "./pages/admin/Videos";
 import NotFound from "./pages/NotFound";
 
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/stats" element={<AdminStats />} />
             <Route path="/admin/content" element={<AdminContent />} />
+            <Route path="/admin/content/technical-sheets" element={<AdminTechnicalSheets />} />
             <Route path="/admin/videos" element={<AdminVideos />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
