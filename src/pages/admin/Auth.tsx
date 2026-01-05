@@ -57,13 +57,21 @@ export default function AdminAuth() {
   const checkInvitation = async () => {
     if (!token) return;
     
-    const { data, error } = await supabase
-      .from('invitations')
-      .select('*')
-      .eq('token', token)
-      .maybeSingle();
+    // Validate token format (64 hex characters)
+    if (!/^[0-9a-f]{64}$/i.test(token)) {
+      setInvitationValid(false);
+      toast({
+        title: "Invitation invalide",
+        description: "Format du lien d'invitation incorrect.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Use secure RPC function instead of direct table access
+    const { data, error } = await supabase.rpc('get_invitation_by_token', { _token: token });
 
-    if (error || !data) {
+    if (error || !data || data.length === 0) {
       setInvitationValid(false);
       toast({
         title: "Invitation invalide",
@@ -73,28 +81,9 @@ export default function AdminAuth() {
       return;
     }
 
-    if (data.accepted_at) {
-      setInvitationValid(false);
-      toast({
-        title: "Invitation déjà utilisée",
-        description: "Cette invitation a déjà été acceptée.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (new Date(data.expires_at) < new Date()) {
-      setInvitationValid(false);
-      toast({
-        title: "Invitation expirée",
-        description: "Cette invitation a expiré.",
-        variant: "destructive",
-      });
-      return;
-    }
-
+    const invitation = data[0];
     setInvitationValid(true);
-    setEmail(data.email);
+    setEmail(invitation.email);
     setIsSignUp(true);
   };
 
