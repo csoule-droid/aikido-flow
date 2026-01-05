@@ -46,12 +46,6 @@ const childPages = [
     icon: Heart,
   },
   {
-    title: "Aïkido pour jeunes",
-    description: "Un art martial dynamique pour les 16-30 ans.",
-    href: "/decouvrir/jeunes",
-    icon: Users,
-  },
-  {
     title: "Bienfaits physiques & mentaux",
     description: "Découvrez tous les avantages de la pratique.",
     href: "/decouvrir/bienfaits",
