@@ -46,6 +46,12 @@ const childPages = [
     icon: Heart,
   },
   {
+    title: "Self-défense au féminin",
+    description: "Techniques adaptées et conseils pratiques pour votre sécurité.",
+    href: "/decouvrir/self-defense",
+    icon: Users,
+  },
+  {
     title: "Bienfaits physiques & mentaux",
     description: "Découvrez tous les avantages de la pratique.",
     href: "/decouvrir/bienfaits",
