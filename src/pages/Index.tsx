@@ -45,12 +45,6 @@ const audiences = [
     href: "/decouvrir/femmes",
     gradient: "from-primary to-primary/60",
   },
-  {
-    title: "Pour les jeunes",
-    description: "Un art martial dynamique, stylé et sans violence pour les 16-30 ans.",
-    href: "/decouvrir/jeunes",
-    gradient: "from-secondary to-secondary/60",
-  },
 ];
 
 const quickLinks = [
@@ -98,12 +92,12 @@ const Index = () => {
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 animate-fade-up delay-100">
-              <span className="gradient-text">Aiki,</span> agis sur ton énergie !
+              Aïkido : <span className="gradient-text">confiance en soi</span>, self‑défense, respect
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-up delay-200">
-              Découvrez l'aïkido, l'art martial qui transforme l'énergie en harmonie. 
-              Un chemin vers la confiance, le bien-être et la maîtrise de soi.
+              Un sport pour les femmes de tous âges. Découvrez l'art martial qui transforme 
+              l'énergie en harmonie, dans un cadre bienveillant et respectueux.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-300">
@@ -164,10 +158,10 @@ const Index = () => {
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              L'aïkido, pour <span className="gradient-text">qui</span> ?
+              Pourquoi les <span className="gradient-text">femmes</span> choisissent l'aïkido ?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              L'aïkido est un sport complet qui peut convenir à tous, à tout âge. C'est une discipline très intéressante pour les femmes, les seniors et les jeunes qui veulent pratiquer un sport de combat "doux" sans compétition.
+              L'aïkido offre aux femmes un espace de développement personnel unique : confiance en soi, techniques de self-défense efficaces, et une pratique respectueuse du corps à tout âge.
             </p>
           </div>
 
