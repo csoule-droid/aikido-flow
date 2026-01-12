@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { logError } from '@/lib/logger';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -120,7 +121,7 @@ export default function AdminUsers() {
       `);
 
     if (rolesError) {
-      console.error('Error fetching users:', rolesError);
+      logError('Users fetch', rolesError);
     } else if (rolesData) {
       const formattedUsers: UserWithRole[] = rolesData.map((item: any) => ({
         user_id: item.user_id,
@@ -142,7 +143,7 @@ export default function AdminUsers() {
       .order('created_at', { ascending: false });
 
     if (invitationsError) {
-      console.error('Error fetching invitations:', invitationsError);
+      logError('Invitations fetch', invitationsError);
     } else {
       setInvitations(invitationsData as Invitation[] || []);
     }
