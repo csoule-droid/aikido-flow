@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { logError } from '@/lib/logger';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -88,9 +89,9 @@ export default function AdminTechnicalSheets() {
 
       if (error) throw error;
       setSheets(data || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Erreur lors du chargement des fiches');
-      console.error(error);
+      logError('TechnicalSheets fetch', error);
     } finally {
       setIsLoading(false);
     }
@@ -157,13 +158,14 @@ export default function AdminTechnicalSheets() {
       setIsDialogOpen(false);
       resetForm();
       fetchSheets();
-    } catch (error: any) {
-      if (error.code === '23505') {
+    } catch (error: unknown) {
+      const err = error as { code?: string };
+      if (err.code === '23505') {
         toast.error('Ce slug existe déjà');
       } else {
         toast.error('Erreur lors de la sauvegarde');
       }
-      console.error(error);
+      logError('TechnicalSheets save', error);
     }
   };
 
@@ -191,9 +193,9 @@ export default function AdminTechnicalSheets() {
       if (error) throw error;
       toast.success('Fiche supprimée');
       fetchSheets();
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Erreur lors de la suppression');
-      console.error(error);
+      logError('TechnicalSheets delete', error);
     }
   };
 
@@ -207,9 +209,9 @@ export default function AdminTechnicalSheets() {
       if (error) throw error;
       toast.success(sheet.published ? 'Fiche dépubliée' : 'Fiche publiée');
       fetchSheets();
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Erreur lors de la mise à jour');
-      console.error(error);
+      logError('TechnicalSheets toggle publish', error);
     }
   };
 
