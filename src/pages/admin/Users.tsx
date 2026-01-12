@@ -51,6 +51,7 @@ interface UserWithRole {
   first_name: string | null;
   last_name: string | null;
   role: AppRole;
+  is_super_admin: boolean;
   created_at: string;
 }
 
@@ -116,6 +117,7 @@ export default function AdminUsers() {
       .select(`
         user_id,
         role,
+        is_super_admin,
         created_at,
         profiles!inner(email, first_name, last_name)
       `);
@@ -129,6 +131,7 @@ export default function AdminUsers() {
         first_name: item.profiles.first_name,
         last_name: item.profiles.last_name,
         role: item.role as AppRole,
+        is_super_admin: item.is_super_admin || false,
         created_at: item.created_at,
       }));
       setUsers(formattedUsers);
@@ -219,7 +222,7 @@ export default function AdminUsers() {
 
   const handleUpdateRole = async (userId: string, newRole: AppRole) => {
     const targetUser = users.find(u => u.user_id === userId);
-    if (targetUser?.email.toLowerCase() === 'clenadant@gmail.com') {
+    if (targetUser?.is_super_admin) {
       toast({
         title: "Action non autorisée",
         description: "Vous ne pouvez pas modifier le rôle de l'administrateur général.",
@@ -453,7 +456,7 @@ export default function AdminUsers() {
               <TableBody>
                 {users.map((u) => {
                   const RoleIcon = roleIcons[u.role];
-                  const isSuperAdmin = u.email.toLowerCase() === 'clenadant@gmail.com';
+                  const isSuperAdmin = u.is_super_admin;
                   return (
                     <TableRow key={u.user_id}>
                       <TableCell className="font-medium">
