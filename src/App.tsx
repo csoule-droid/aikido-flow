@@ -23,6 +23,7 @@ import AdminStats from "./pages/admin/Stats";
 import AdminContent from "./pages/admin/Content";
 import AdminTechnicalSheets from "./pages/admin/TechnicalSheets";
 import AdminVideos from "./pages/admin/Videos";
+import Connexion from "./pages/Connexion";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/ressources" element={<Ressources />} />
             <Route path="/a-propos" element={<APropos />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/connexion" element={<Connexion />} />
             <Route path="/admin/auth" element={<AdminAuth />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/users" element={<AdminUsers />} />
