@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO, schemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { 
   Heart, 
@@ -48,9 +49,49 @@ const testimonials = [
   },
 ];
 
+const faqData = [
+  {
+    question: "L'aïkido est-il adapté aux femmes de plus de 30 ans ?",
+    answer: "Absolument. L'aïkido est particulièrement adapté car il n'y a pas de compétition ni de chocs. Les mouvements sont fluides et respectueux du corps. De nombreuses pratiquantes commencent après 30, 40 ou même 50 ans.",
+  },
+  {
+    question: "Faut-il être en bonne condition physique pour commencer ?",
+    answer: "Non, aucune condition physique particulière n'est requise. L'aïkido développe progressivement la souplesse, l'endurance et la coordination. Chacune progresse à son rythme.",
+  },
+  {
+    question: "L'aïkido permet-il vraiment de se défendre ?",
+    answer: "Oui, l'aïkido enseigne des techniques de self-défense efficaces qui ne nécessitent pas de force physique. Les techniques utilisent le mouvement et le déséquilibre de l'attaquant.",
+  },
+  {
+    question: "Combien de temps faut-il pour progresser ?",
+    answer: "Dès les premières semaines, vous ressentirez des bénéfices sur votre posture et votre confiance. Les techniques de base s'acquièrent en quelques mois de pratique régulière.",
+  },
+];
+
+const seoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    schemas.createArticle({
+      headline: "L'aïkido pour les femmes : confiance, self-défense et bien-être",
+      description: "Découvrez pourquoi l'aïkido est l'art martial idéal pour les femmes. Self-défense adaptée, confiance en soi et pratique bienveillante.",
+      url: "/decouvrir/femmes",
+    }),
+    schemas.createFAQPage(faqData),
+  ]
+};
+
 export default function DecouvrirFemmes() {
   return (
     <Layout>
+      <SEO
+        title="Aïkido femme : self-défense et confiance en soi"
+        description="L'aïkido pour les femmes : un art martial qui valorise la fluidité plutôt que la force. Self-défense adaptée, confiance en soi et communauté bienveillante."
+        keywords="aikido femme, self-défense femme, art martial femme, sport femme confiance, aikido débutante, sport sans violence femme"
+        canonicalUrl="/decouvrir/femmes"
+        ogType="article"
+        schema={seoSchema}
+      />
+
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-primary/5 to-background">
         <div className="container-custom mx-auto">
@@ -139,6 +180,24 @@ export default function DecouvrirFemmes() {
               <div key={index} className="bg-primary/5 rounded-2xl p-6 border border-primary/10">
                 <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
                 <p className="font-semibold text-primary">{testimonial.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Questions <span className="gradient-text">fréquentes</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {faqData.map((item) => (
+              <div key={item.question} className="bg-card rounded-2xl p-6">
+                <h3 className="font-bold mb-2">{item.question}</h3>
+                <p className="text-sm text-muted-foreground">{item.answer}</p>
               </div>
             ))}
           </div>

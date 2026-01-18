@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO, schemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -58,9 +59,45 @@ const aikidoPrinciples = [
   "Prioriser la fuite quand c'est possible",
 ];
 
+const faqData = [
+  {
+    question: "L'aïkido est-il efficace en self-défense pour une femme ?",
+    answer: "Oui, l'aïkido est particulièrement adapté aux femmes car les techniques utilisent le mouvement et le déséquilibre plutôt que la force. Une femme peut projeter un agresseur plus lourd qu'elle.",
+  },
+  {
+    question: "Combien de temps pour maîtriser les bases de self-défense ?",
+    answer: "Les premières techniques de libération et d'esquive s'acquièrent en quelques mois. La confiance en soi se développe dès les premières semaines de pratique régulière.",
+  },
+  {
+    question: "Les techniques fonctionnent-elles vraiment en situation réelle ?",
+    answer: "L'aïkido enseigne des réflexes et une capacité à rester calme qui sont essentiels en situation de stress. L'objectif premier reste la prévention et la fuite.",
+  },
+];
+
+const seoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    schemas.createArticle({
+      headline: "Self-défense pour femme : techniques d'aïkido",
+      description: "Apprenez les techniques de self-défense de l'aïkido, particulièrement adaptées aux femmes. Efficace sans force physique.",
+      url: "/decouvrir/self-defense",
+    }),
+    schemas.createFAQPage(faqData),
+  ]
+};
+
 const DecouvrirSelfDefense = () => {
   return (
     <Layout>
+      <SEO
+        title="Self-défense pour femme : techniques d'aïkido efficaces"
+        description="Apprenez la self-défense avec l'aïkido. Techniques adaptées aux femmes, efficaces sans force physique. Libérations, esquives et déséquilibres."
+        keywords="self-défense femme, self défense féminine, aikido self-défense, techniques protection femme, cours self-défense, art martial femme"
+        canonicalUrl="/decouvrir/self-defense"
+        ogType="article"
+        schema={seoSchema}
+      />
+
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
         <div className="container-custom mx-auto text-center">

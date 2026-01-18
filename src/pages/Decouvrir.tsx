@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO, schemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { 
   ChevronRight, 
@@ -78,9 +79,30 @@ const faq = [
   },
 ];
 
+const seoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    schemas.createArticle({
+      headline: "Qu'est-ce que l'aïkido ? Guide complet pour femmes",
+      description: "Découvrez l'aïkido, l'art martial japonais non-violent. Principes, techniques et bienfaits pour les femmes.",
+      url: "/decouvrir",
+    }),
+    schemas.createFAQPage(faq),
+  ]
+};
+
 export default function Decouvrir() {
   return (
     <Layout>
+      <SEO
+        title="Découvrir l'aïkido : guide complet pour débutantes"
+        description="Qu'est-ce que l'aïkido ? Découvrez cet art martial japonais non-violent, ses principes fondamentaux et pourquoi il est idéal pour les femmes."
+        keywords="aikido c'est quoi, découvrir aikido, art martial japonais, aikido débutant, aikido femme, aikido non-violent"
+        canonicalUrl="/decouvrir"
+        ogType="article"
+        schema={seoSchema}
+      />
+
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-muted/50 to-background">
         <div className="container-custom mx-auto">

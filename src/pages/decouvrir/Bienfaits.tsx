@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO, schemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { 
   Heart, 
@@ -27,9 +28,24 @@ const mentalBenefits = [
   "Meilleure gestion des conflits",
 ];
 
+const seoSchema = schemas.createArticle({
+  headline: "Bienfaits de l'aïkido pour la santé des femmes",
+  description: "Découvrez tous les bienfaits physiques et mentaux de l'aïkido : souplesse, gestion du stress, confiance en soi.",
+  url: "/decouvrir/bienfaits",
+});
+
 export default function DecouvrirBienfaits() {
   return (
     <Layout>
+      <SEO
+        title="Bienfaits de l'aïkido : sport santé pour femme"
+        description="Découvrez les bienfaits physiques et mentaux de l'aïkido : souplesse, gestion du stress, confiance en soi. Le sport santé idéal pour les femmes."
+        keywords="bienfaits aikido, sport santé femme, aikido bien-être, sport anti-stress, souplesse femme, confiance en soi sport"
+        canonicalUrl="/decouvrir/bienfaits"
+        ogType="article"
+        schema={seoSchema}
+      />
+
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-muted/50 to-background">
         <div className="container-custom mx-auto">
