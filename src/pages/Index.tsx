@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { SEO, schemas } from "@/components/SEO";
 import { 
   ArrowRight, 
   Heart, 
@@ -14,6 +15,21 @@ import {
   Zap
 } from "lucide-react";
 import heroImage from "@/assets/hero-aikido.jpg";
+
+const seoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    schemas.organization,
+    {
+      "@type": "WebPage",
+      "@id": "https://aikidoconnect.fr/",
+      "name": "AikidoConnect - Sport santé et self-défense pour femmes",
+      "description": "Découvrez l'aïkido, le sport idéal pour les femmes de tous âges. Self-défense douce, confiance en soi et bien-être. Cours en France.",
+      "url": "https://aikidoconnect.fr/",
+      "isPartOf": { "@id": "https://aikidoconnect.fr/#website" }
+    }
+  ]
+};
 
 const benefits = [
   {
@@ -71,6 +87,14 @@ const quickLinks = [
 const Index = () => {
   return (
     <Layout>
+      <SEO
+        title="Aïkido femme : sport santé, self-défense et confiance en soi"
+        description="L'aïkido, sport idéal pour les femmes de 30 ans et plus. Self-défense douce, confiance en soi et bien-être. Découvrez nos cours en France."
+        keywords="aikido femme, sport femme 30 ans, self-défense femme, sport santé femme, aikido débutant, art martial femme, confiance en soi"
+        canonicalUrl="/"
+        schema={seoSchema}
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Image */}
