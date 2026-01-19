@@ -1,5 +1,10 @@
 import { Helmet } from "react-helmet-async";
 
+interface HreflangLink {
+  hreflang: string;
+  href: string;
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -10,10 +15,22 @@ interface SEOProps {
   articlePublishedTime?: string;
   articleModifiedTime?: string;
   schema?: object;
+  /** Override default hreflang links for internationalized pages */
+  alternateLanguages?: HreflangLink[];
 }
 
 const BASE_URL = "https://aikidoconnect.fr";
 const DEFAULT_OG_IMAGE = "https://aikidoconnect.fr/og-image.jpg";
+
+// Default hreflang configuration for French site with x-default
+const getDefaultHreflangLinks = (canonicalUrl?: string): HreflangLink[] => {
+  const path = canonicalUrl || "/";
+  return [
+    { hreflang: "fr-FR", href: `${BASE_URL}${path}` },
+    { hreflang: "fr", href: `${BASE_URL}${path}` },
+    { hreflang: "x-default", href: `${BASE_URL}${path}` },
+  ];
+};
 
 export function SEO({
   title,
@@ -25,6 +42,7 @@ export function SEO({
   articlePublishedTime,
   articleModifiedTime,
   schema,
+  alternateLanguages,
 }: SEOProps) {
   const fullTitle = title.includes("AikidoConnect") 
     ? title 
@@ -34,6 +52,9 @@ export function SEO({
     ? `${BASE_URL}${canonicalUrl}` 
     : undefined;
 
+  // Use provided alternate languages or generate defaults
+  const hreflangLinks = alternateLanguages || getDefaultHreflangLinks(canonicalUrl);
+
   return (
     <Helmet>
       {/* Primary Meta Tags */}
@@ -41,6 +62,20 @@ export function SEO({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       {fullCanonicalUrl && <link rel="canonical" href={fullCanonicalUrl} />}
+      
+      {/* Language Meta */}
+      <html lang="fr" />
+      <meta httpEquiv="content-language" content="fr-FR" />
+      
+      {/* Hreflang Links for International SEO */}
+      {hreflangLinks.map((link) => (
+        <link 
+          key={link.hreflang}
+          rel="alternate" 
+          hrefLang={link.hreflang} 
+          href={link.href} 
+        />
+      ))}
       
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -74,6 +109,22 @@ export function SEO({
     </Helmet>
   );
 }
+
+// Helper to create hreflang links for future internationalization
+export const createHreflangLinks = (
+  path: string,
+  languages: { code: string; region?: string }[]
+): HreflangLink[] => {
+  const links: HreflangLink[] = languages.map((lang) => ({
+    hreflang: lang.region ? `${lang.code}-${lang.region}` : lang.code,
+    href: `${BASE_URL}/${lang.code}${path}`,
+  }));
+  
+  // Add x-default pointing to French version
+  links.push({ hreflang: "x-default", href: `${BASE_URL}${path}` });
+  
+  return links;
+};
 
 // Pre-built schemas for common use cases
 export const schemas = {
