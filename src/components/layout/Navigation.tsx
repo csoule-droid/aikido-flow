@@ -37,9 +37,6 @@ const navigation = [
       { name: "Iriminage", href: "/techniques/iriminage" },
     ],
   },
-  { name: "Ressources", href: "/ressources" },
-  { name: "À propos", href: "/a-propos" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
@@ -110,27 +107,8 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA + Auth Buttons */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            {!isLoading && (
-              user ? (
-                <button
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-200"
-                >
-                  <LogOut className="h-4 w-4" />
-                  Déconnexion
-                </button>
-              ) : (
-                <Link
-                  to="/connexion"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-200"
-                >
-                  <LogIn className="h-4 w-4" />
-                  Connexion
-                </Link>
-              )
-            )}
             <Button variant="hero" size="default" asChild>
               <Link to="/commencer">Débuter l'aïkido</Link>
             </Button>

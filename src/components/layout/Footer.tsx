@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { Heart, Mail, ExternalLink } from "lucide-react";
+import { Heart, Mail, ExternalLink, LogIn, BookOpen, Users, Phone } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/aikido-logo.png";
 
 const footerLinks = {
@@ -18,8 +20,11 @@ const footerLinks = {
   ressources: [
     { name: "Glossaire", href: "/ressources" },
     { name: "Techniques", href: "/techniques" },
-    { name: "À propos", href: "/a-propos" },
-    { name: "Contact", href: "/contact" },
+  ],
+  informations: [
+    { name: "À propos", href: "/a-propos", icon: Users },
+    { name: "Contact", href: "/contact", icon: Phone },
+    { name: "Connexion", href: "/connexion", icon: LogIn },
   ],
 };
 
@@ -28,7 +33,7 @@ export function Footer() {
     <footer className="bg-foreground text-background">
       <div className="container-custom mx-auto section-padding">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
@@ -99,6 +104,24 @@ export function Footer() {
                     to={link.href}
                     className="text-background/70 hover:text-secondary transition-colors text-sm"
                   >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Informations */}
+          <div>
+            <h4 className="font-bold text-lg mb-4">Informations</h4>
+            <ul className="space-y-3">
+              {footerLinks.informations.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-background/70 hover:text-secondary transition-colors text-sm inline-flex items-center gap-2"
+                  >
+                    {link.icon && <link.icon className="w-4 h-4" />}
                     {link.name}
                   </Link>
                 </li>
