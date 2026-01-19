@@ -1,3 +1,7 @@
+# Sitemap
+Sitemap: https://aikido-flow.lovable.app/sitemap.xml
+
+# Crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +16,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Pages admin exclues de l'indexation
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /connexion
