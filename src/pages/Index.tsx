@@ -145,7 +145,7 @@ const Index = () => {
               Pourquoi choisir l'<span className="gradient-text">aïkido</span> ?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Un art martial unique qui développe corps et esprit dans le respect de l'autre.
+              L'aïkido offre aux femmes un espace de développement personnel unique. Il développe la confiance en soi, offre des techniques de défense efficaces, et accroît l'énergie et le bien-être. On peut débuter l'aïkido à tout âge, quelle que soit sa forme physique.
             </p>
           </div>
 
