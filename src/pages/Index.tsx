@@ -54,14 +54,6 @@ const benefits = [
   },
 ];
 
-const audiences = [
-  {
-    title: "Pour les femmes",
-    description: "Confiance, self-défense et épanouissement dans un cadre bienveillant.",
-    href: "/decouvrir/femmes",
-    gradient: "from-primary to-primary/60",
-  },
-];
 
 const quickLinks = [
   {
@@ -177,36 +169,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Audiences Section */}
-      <section className="section-padding bg-muted/50">
-        <div className="container-custom mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Pourquoi les <span className="gradient-text">femmes</span> choisissent l'aïkido ?
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              L'aïkido offre aux femmes un espace de développement personnel unique : confiance en soi, techniques de self-défense efficaces, et une pratique respectueuse du corps à tout âge.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {audiences.map((audience) => (
-              <Link
-                key={audience.title}
-                to={audience.href}
-                className="group relative overflow-hidden rounded-3xl bg-card p-8 shadow-card hover:shadow-glow transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${audience.gradient} opacity-5 group-hover:opacity-10 transition-opacity`} />
-                <h3 className="text-2xl font-bold mb-3">{audience.title}</h3>
-                <p className="text-muted-foreground mb-6">{audience.description}</p>
-                <span className="inline-flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all">
-                  En savoir plus <ChevronRight className="w-5 h-5" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Quick Links Section */}
       <section className="section-padding bg-background">
