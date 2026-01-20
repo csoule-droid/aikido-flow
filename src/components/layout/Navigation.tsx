@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, LogIn, LogOut, User } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/aikido-logo.png";
@@ -43,13 +42,8 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
-  const { user, signOut, isLoading } = useAuth();
 
   const isActive = (href: string) => location.pathname === href;
-
-  const handleSignOut = async () => {
-    await signOut();
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
@@ -157,30 +151,8 @@ export function Navigation() {
                   )}
                 </div>
               ))}
-              {/* Mobile Auth + CTA */}
-              <div className="mt-4 px-4 flex flex-col gap-3">
-                {!isLoading && (
-                  user ? (
-                    <Button
-                      variant="outline"
-                      className="w-full"
-                      onClick={() => {
-                        handleSignOut();
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Déconnexion
-                    </Button>
-                  ) : (
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link to="/connexion" onClick={() => setMobileMenuOpen(false)}>
-                        <LogIn className="h-4 w-4 mr-2" />
-                        Connexion
-                      </Link>
-                    </Button>
-                  )
-                )}
+              {/* Mobile CTA */}
+              <div className="mt-4 px-4">
                 <Button variant="hero" className="w-full" asChild>
                   <Link to="/commencer">Débuter l'aïkido</Link>
                 </Button>
