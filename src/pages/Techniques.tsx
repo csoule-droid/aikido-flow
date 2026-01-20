@@ -7,13 +7,81 @@ import {
   Play,
   ArrowRight,
   Star,
-  Layers
+  Layers,
+  Sword,
+  Hand,
+  BookOpen
 } from "lucide-react";
 
 const levels = [
   { name: "Débutant", color: "bg-green-500", description: "6e au 4e kyu" },
   { name: "Intermédiaire", color: "bg-secondary", description: "3e au 1er kyu" },
   { name: "Avancé", color: "bg-primary", description: "Dan (ceinture noire)" },
+];
+
+// Coups (Atemi)
+const coups = [
+  { name: "Shomen uchi", japanese: "正面打ち", description: "Frappe verticale du sommet de la tête avec le tranchant de la main" },
+  { name: "Yokomen uchi", japanese: "横面打ち", description: "Frappe de biais sur la tempe avec le tranchant de la main" },
+  { name: "Sokumen uchi", japanese: "側面打ち", description: "Comme la précédente mais croisée ; cette attaque est impressionnante mais en fait moins difficile à contrôler" },
+  { name: "Chūdan tsuki", japanese: "中段突き", description: "Coup de poing direct à l'abdomen" },
+  { name: "Jodan tsuki", japanese: "上段突き", description: "Coup de poing direct à la trachée" },
+  { name: "Mae geri", japanese: "前蹴り", description: "Coup de pied frontal à l'abdomen" },
+  { name: "Mawashi geri", japanese: "回し蹴り", description: "Coup de pied circulaire" },
+];
+
+// Saisies (Dori)
+const saisies = [
+  { name: "Katate dori", japanese: "片手取り", description: "Saisie d'un poignet avec une main. Très fréquemment utilisé pour les premiers cours car elle fixe une bonne distance de base (ma-ai) et donne le contact initial." },
+  { name: "Ryote dori", japanese: "両手取り", description: "Saisie des deux poignets. Cette symétrie n'existe pas au niveau des pieds, d'où des conséquences variables selon la technique." },
+  { name: "Morote dori", japanese: "諸手取り", description: "Saisie d'un poignet avec les deux mains. Uke se trouve à l'extérieur de tori avec une saisie très forte." },
+  { name: "Kata dori", japanese: "肩取り", description: "Saisie de l'épaule du keikogi à l'aide d'une seule main. La saisie doit être ferme, pour pousser ou tirer tori." },
+  { name: "Ryo kata dori", japanese: "両肩取り", description: "Saisie de face du keikogi au niveau des deux épaules. C'est une des attaques pour le randori." },
+  { name: "Sode dori", japanese: "袖取り", description: "Saisie de la manche de tori au niveau du coude. Distance et mobilité intermédiaires entre Katate dori et Kata dori." },
+  { name: "Muna dori", japanese: "胸取り", description: "Saisie de la doublure du keikogi à une main ou à deux mains." },
+  { name: "Kata dori men uchi", japanese: "肩取り面打ち", description: "Uke saisit d'une main l'épaule et de l'autre tente de frapper au sommet de la tête." },
+  { name: "Ushiro ryote dori", japanese: "後ろ両手取り", description: "Uke saisit les deux poignets de tori en passant derrière lui. Réaction à un contre de tori." },
+  { name: "Ushiro ryo kata dori", japanese: "両肩取り", description: "Saisie du keikogi au niveau des deux épaules en passant par l'arrière." },
+  { name: "Eri dori", japanese: "襟取り", description: "Saisie du col par l'arrière. Le col est saisi indifféremment avec l'une ou l'autre des deux mains." },
+];
+
+// Les 5 principes fondamentaux
+const principes = [
+  { 
+    name: "Ikkyo", 
+    japanese: "一教", 
+    meaning: "Premier principe",
+    description: "Clef de bras permettant d'amener uke au sol en contrôlant le poignet et en faisant faire un arc de cercle au coude en direction de la tête. Tout le mouvement est identique à celui d'une coupe au sabre.",
+    forms: ["Omote : tori avance en direction de uke (irimi) et effectue un mouvement de coupe de sabre", "Ura : tori effectue un mouvement de coupe sur place puis pivote (tenkan)"]
+  },
+  { 
+    name: "Nikyo", 
+    japanese: "二教", 
+    meaning: "Deuxième principe",
+    description: "Technique d'immobilisation reposant sur une triple torsion du poignet de uke. Variation subtile sur Ikkyo destinée à briser la résistance d'un uke insuffisamment déséquilibré.",
+    forms: []
+  },
+  { 
+    name: "Sankyo", 
+    japanese: "三教", 
+    meaning: "Troisième principe",
+    description: "Technique d'immobilisation reposant sur la torsion du poignet en hyper-pronation, également appelée kote hineri (torsion du poignet). Réalisable sur saisies ou frappes, elle peut être une continuité de ikkyo.",
+    forms: []
+  },
+  { 
+    name: "Yonkyo", 
+    japanese: "四教", 
+    meaning: "Quatrième principe",
+    description: "Repose sur le contrôle du poignet de uke, couplé à une pression forte avec le pouce sur son nerf radial. Technique redoutable pour uke qui nécessite une attention particulière de la part de tori.",
+    forms: []
+  },
+  { 
+    name: "Gokyo", 
+    japanese: "五教", 
+    meaning: "Cinquième principe",
+    description: "Technique d'immobilisation utilisant une compression de l'avant-bras bloqué par la main retournée, paume vers le haut. D'une grande efficacité contre les attaques au couteau. Début équivalent à ikkyō.",
+    forms: []
+  },
 ];
 
 const techniques = [
@@ -24,14 +92,6 @@ const techniques = [
     level: "Débutant",
     href: "/techniques/shihonage",
     description: "Une des techniques fondamentales où le partenaire est projeté par une rotation du bras.",
-  },
-  {
-    name: "Ikkyo",
-    japanese: "一教",
-    meaning: "Première technique",
-    level: "Débutant",
-    href: "/techniques/ikkyo",
-    description: "Contrôle du bras menant à une immobilisation au sol. Base de nombreuses variations.",
   },
   {
     name: "Iriminage",
@@ -99,8 +159,124 @@ export default function Techniques() {
         </div>
       </section>
 
-      {/* Levels */}
+      {/* Les 5 principes fondamentaux */}
       <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">
+              Les cinq <span className="gradient-text">principes fondamentaux</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Les cinq principes fondamentaux sous-tendent nombre de techniques en aïkido. 
+              Ils sont déclinés selon la posture et l'attaque, et reflètent les principes philosophiques de la discipline.
+            </p>
+            <div className="mt-4 bg-muted/50 rounded-xl p-4 max-w-xl mx-auto">
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-foreground">Aïkido (合気道)</strong> : la voie (道 dō) de l'harmonie (合 ai) avec l'énergie (気 ki). 
+                Art martial japonais fondé par Morihei Ueshiba.
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {principes.map((principe, index) => (
+              <div
+                key={principe.name}
+                className="card-elevated p-6 hover-lift"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-primary font-bold">{index + 1}</span>
+                  </div>
+                  <div>
+                    <div className="text-xl font-bold text-primary">{principe.japanese}</div>
+                    <h3 className="font-bold">{principe.name}</h3>
+                  </div>
+                </div>
+                <p className="text-sm text-secondary font-medium mb-2">{principe.meaning}</p>
+                <p className="text-sm text-muted-foreground mb-3">{principe.description}</p>
+                {principe.forms.length > 0 && (
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    {principe.forms.map((form, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <ChevronRight className="w-3 h-3 mt-0.5 text-primary flex-shrink-0" />
+                        <span>{form}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Coups (Atemi) */}
+      <section className="section-padding bg-muted/50">
+        <div className="container-custom mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <Sword className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold">
+                Coups : <span className="gradient-text">Atemi</span>
+              </h2>
+              <p className="text-muted-foreground">Les frappes utilisées en aïkido</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {coups.map((coup) => (
+              <div
+                key={coup.name}
+                className="bg-card rounded-xl p-5 shadow-sm border border-border/50"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="text-2xl font-bold text-primary">{coup.japanese}</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg">{coup.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{coup.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Saisies (Dori) */}
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center">
+              <Hand className="w-6 h-6 text-secondary" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold">
+                Saisies : <span className="gradient-text">Dori</span>
+              </h2>
+              <p className="text-muted-foreground">Les différentes prises utilisées en aïkido</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {saisies.map((saisie) => (
+              <div
+                key={saisie.name}
+                className="bg-card rounded-xl p-5 shadow-sm border border-border/50"
+              >
+                <div className="text-xl font-bold text-secondary mb-1">{saisie.japanese}</div>
+                <h3 className="font-bold">{saisie.name}</h3>
+                <p className="text-sm text-muted-foreground mt-2">{saisie.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Levels */}
+      <section className="section-padding bg-muted/50">
         <div className="container-custom mx-auto">
           <h2 className="text-3xl font-bold mb-8">
             Les <span className="gradient-text">niveaux</span> de pratique
@@ -118,7 +294,7 @@ export default function Techniques() {
             ))}
           </div>
 
-          <div className="bg-muted/50 rounded-2xl p-6 max-w-2xl">
+          <div className="bg-card rounded-2xl p-6 max-w-2xl shadow-sm">
             <div className="flex items-start gap-3">
               <Layers className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
@@ -134,12 +310,20 @@ export default function Techniques() {
         </div>
       </section>
 
-      {/* Techniques grid */}
-      <section className="section-padding bg-muted/50">
+      {/* Fiches techniques */}
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <h2 className="text-3xl font-bold mb-8">
-            Fiches <span className="gradient-text">techniques</span>
-          </h2>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <BookOpen className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold">
+                Fiches <span className="gradient-text">techniques</span>
+              </h2>
+              <p className="text-muted-foreground">Techniques détaillées avec points clés</p>
+            </div>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {techniques.map((tech) => (
@@ -169,7 +353,7 @@ export default function Techniques() {
       </section>
 
       {/* Video placeholder */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/50">
         <div className="container-custom mx-auto">
           <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-12 text-center">
             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -185,7 +369,7 @@ export default function Techniques() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto text-center">
           <Star className="w-12 h-12 text-secondary mx-auto mb-4" />
           <h2 className="text-3xl font-bold mb-4">
