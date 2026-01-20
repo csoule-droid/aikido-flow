@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Mail, ExternalLink, LogIn, BookOpen, Users, Phone } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
-import { Button } from "@/components/ui/button";
+import { Heart, Mail, ExternalLink, BookOpen, Users, Phone } from "lucide-react";
 import logo from "@/assets/aikido-logo.png";
 
 const footerLinks = {
@@ -24,7 +22,6 @@ const footerLinks = {
   informations: [
     { name: "À propos", href: "/a-propos", icon: Users },
     { name: "Contact", href: "/contact", icon: Phone },
-    { name: "Connexion", href: "/connexion", icon: LogIn },
   ],
 };
 
