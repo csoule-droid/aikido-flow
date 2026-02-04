@@ -13,7 +13,6 @@ const navigation = [
     children: [
       { name: "Qu'est-ce que l'Aïkido ?", href: "/decouvrir" },
       { name: "Pour les femmes", href: "/decouvrir/femmes" },
-      { name: "Pour les jeunes", href: "/decouvrir/jeunes" },
       { name: "Bienfaits", href: "/decouvrir/bienfaits" },
     ],
   },
