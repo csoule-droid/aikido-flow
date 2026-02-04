@@ -143,7 +143,7 @@ export default function Commencer() {
                 Le site de la FFAB ou de la FFAAA propose des annuaires par région.
               </p>
               <Button variant="outline" className="w-full" asChild>
-                <a href="https://www.aikido.com.fr/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.ffabaikido.com/fr/ou-pratiquer-22.html" target="_blank" rel="noopener noreferrer">
                   Annuaire des dojos
                   <ChevronRight className="w-4 h-4" />
                 </a>
