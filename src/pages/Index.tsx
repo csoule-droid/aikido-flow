@@ -124,10 +124,10 @@ const Index = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="default" className="text-sm font-semibold" asChild>
-                <Link to="/commencer">
+                <a href="https://www.youtube.com/watch?v=mpYYdO4ZCBs" target="_blank" rel="noopener noreferrer">
                   <Play className="w-4 h-4" />
                   Vidéo
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
