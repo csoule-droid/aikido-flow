@@ -17,6 +17,7 @@ import Techniques from "./pages/Techniques";
 import Ressources from "./pages/Ressources";
 import APropos from "./pages/APropos";
 import Contact from "./pages/Contact";
+import PlanDuSite from "./pages/PlanDuSite";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/ressources" element={<Ressources />} />
             <Route path="/a-propos" element={<APropos />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/plan-du-site" element={<PlanDuSite />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
