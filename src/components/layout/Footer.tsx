@@ -6,7 +6,7 @@ const footerLinks = {
   decouvrir: [
     { name: "Qu'est-ce que l'aïkido ?", href: "/decouvrir" },
     { name: "Aïkido pour femmes", href: "/decouvrir/femmes" },
-    { name: "Aïkido pour jeunes", href: "/decouvrir/jeunes" },
+    { name: "Self-défense", href: "/decouvrir/self-defense" },
     { name: "Bienfaits", href: "/decouvrir/bienfaits" },
   ],
   commencer: [
