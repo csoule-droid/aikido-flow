@@ -88,7 +88,7 @@ const Index = () => {
       />
       
       {/* Hero Section - Compact to show benefits above fold */}
-      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:min-h-[50vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[60vh] md:min-h-[55vh] lg:min-h-[50vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
